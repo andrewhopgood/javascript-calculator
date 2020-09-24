@@ -1,12 +1,13 @@
 import React from "react";
 import "../styles/Display.css";
 
-function Display({ input, setInput }) {
-  console.log(input);
+function Display({ inputDisplay, outputDisplay }) {
   return (
-    <div id="display">
-      <div id="output__screen"></div>
-      <div id="input__screen">{input}</div>
+    <div id="display__screen">
+      <div id="output__screen">{outputDisplay}</div>
+      <div id="input__screen" id="display">
+        {inputDisplay}
+      </div>
     </div>
   );
 }
