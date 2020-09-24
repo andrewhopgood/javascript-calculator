@@ -12,7 +12,7 @@ function Button({
   const operators = ["*", "+", "/", "-"];
   //const endsWithOperator = /[\+\/\*\-]$/;
   const endsWithOperator = /[+/*-]$/;
-  const endsWithDecimal = /[.]$/;
+  //const endsWithDecimal = /[.]$/;
 
   const isOperator = (x) => {
     if (inputDisplay === "0" && x !== "-") {
@@ -73,9 +73,10 @@ function Button({
     if (inputDisplay.includes(".")) {
       return;
     }
+
     if (endsWithOperator.test(outputDisplay)) {
       setInputDisplay("0" + x);
-      return setOutputDisplay((prev) => prev + "0" + ".");
+      return setOutputDisplay((prev) => prev + "0.");
     }
     setOutputDisplay((prev) => prev + x);
     setInputDisplay(inputDisplay + x);
@@ -104,6 +105,7 @@ function Button({
         inputDisplay === "*" ||
         inputDisplay === "/"
       ) {
+        return;
       }
 
       setInputDisplay(eval(outputDisplay));

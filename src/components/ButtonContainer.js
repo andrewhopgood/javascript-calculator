@@ -18,6 +18,7 @@ function ButtonContainer({
           inputDisplay={inputDisplay}
           outputDisplay={outputDisplay}
           setOutputDisplay={setOutputDisplay}
+          key={button.id}
         />
       ))}
     </div>
