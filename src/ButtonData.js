@@ -1,19 +1,32 @@
 export default [
   {
-    id: "zero",
-    name: "0",
+    id: "clear",
+    name: "AC",
   },
   {
-    id: "one",
-    name: "1",
+    id: "divide",
+    name: "/",
   },
   {
-    id: "two",
-    name: "2",
+    id: "multiply",
+    name: "*",
   },
   {
-    id: "three",
-    name: "3",
+    id: "seven",
+    name: "7",
+  },
+  {
+    id: "eight",
+    name: "8",
+  },
+  {
+    id: "nine",
+    name: "9",
+  },
+
+  {
+    id: "subtract",
+    name: "-",
   },
   {
     id: "four",
@@ -28,43 +41,32 @@ export default [
     name: "6",
   },
   {
-    id: "seven",
-    name: "7",
-  },
-  {
-    id: "eight",
-    name: "8",
-  },
-  {
-    id: "nine",
-    name: "9",
-  },
-  {
-    id: "equals",
-    name: "=",
-  },
-  {
     id: "add",
     name: "+",
   },
+
   {
-    id: "subtract",
-    name: "-",
+    id: "one",
+    name: "1",
   },
   {
-    id: "multiply",
-    name: "*",
+    id: "two",
+    name: "2",
   },
   {
-    id: "divide",
-    name: "/",
+    id: "three",
+    name: "3",
   },
   {
     id: "decimal",
     name: ".",
   },
   {
-    id: "clear",
-    name: "AC",
+    id: "zero",
+    name: "0",
+  },
+  {
+    id: "equals",
+    name: "=",
   },
 ];

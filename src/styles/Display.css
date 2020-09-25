@@ -1,17 +1,34 @@
 #output__screen {
-  background-color: #555;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #333;
+  color: #eeaa33;
+  font-size: 18px;
   padding: 0;
-  width: 100%;
+  width: 95%;
   height: 30px;
   border: none;
   outline: none;
+  margin-left: 15px;
 }
 #display {
-  background-color: #777;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #333;
   color: white;
   padding: 0;
   width: 100%;
   height: 50px;
   border: none;
   outline: none;
+  font-size: 34px;
+}
+
+#display__screen {
+  margin-right: 25px;
+  width: 95%;
+  margin-left: 5px;
+  margin-right: 10px;
 }

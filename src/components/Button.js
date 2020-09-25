@@ -107,7 +107,9 @@ function Button({
       ) {
         return;
       }
-
+      if (outputDisplay === "") {
+        return;
+      }
       setInputDisplay(eval(outputDisplay));
       return setOutputDisplay("");
     }
