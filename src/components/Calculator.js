@@ -4,16 +4,11 @@ import Display from "../components/Display";
 import ButtonContainer from "../components/ButtonContainer";
 
 function Calculator({ data }) {
-  const [inputDisplay, setInputDisplay] = useState("0");
+  const [inputDisplay, setInputDisplay] = useState("");
   const [outputDisplay, setOutputDisplay] = useState("");
   return (
     <div id="calculator">
-      <Display
-        inputDisplay={inputDisplay}
-        //setInputDisplay={setInputDisplay}
-        outputDisplay={outputDisplay}
-        //setOutputDisplay={setOutputDisplay}
-      />
+      <Display inputDisplay={inputDisplay} outputDisplay={outputDisplay} />
       <ButtonContainer
         data={data}
         inputDisplay={inputDisplay}

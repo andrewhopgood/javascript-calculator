@@ -10,9 +10,7 @@ function Button({
 }) {
   const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   const operators = ["*", "+", "/", "-"];
-  //const endsWithOperator = /[\+\/\*\-]$/;
   const endsWithOperator = /[+/*-]$/;
-  //const endsWithDecimal = /[.]$/;
 
   const isOperator = (x) => {
     if (inputDisplay === "0" && x !== "-") {
@@ -70,6 +68,12 @@ function Button({
   };
 
   const isDecimal = (x) => {
+    if (outputDisplay === "" && inputDisplay.includes(".") === false) {
+      setOutputDisplay(inputDisplay + x);
+      setInputDisplay(inputDisplay + x);
+      return;
+    }
+
     if (inputDisplay.includes(".")) {
       return;
     }
@@ -110,9 +114,15 @@ function Button({
       if (outputDisplay === "") {
         return;
       }
-      setInputDisplay(eval(outputDisplay));
-      return setOutputDisplay("");
+
+      evaluateString();
     }
+  };
+
+  const evaluateString = () => {
+    let newStr = new String(eval(outputDisplay));
+    setInputDisplay(newStr);
+    setOutputDisplay("");
   };
 
   return (
