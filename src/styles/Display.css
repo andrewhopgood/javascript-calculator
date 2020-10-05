@@ -1,34 +1,47 @@
-#output__screen {
+#display__panel {
+  margin-right: 25px;
+  width: 95%;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#output-display {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #333;
   color: #eeaa33;
-  font-size: 18px;
+  font-size: 16px;
   padding: 0;
   width: 95%;
   height: 30px;
   border: none;
   outline: none;
-  margin-left: 15px;
 }
-#display {
+
+#input-display {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #333;
   color: white;
   padding: 0;
-  width: 100%;
+  width: 95%;
   height: 50px;
   border: none;
   outline: none;
   font-size: 34px;
 }
-
-#display__screen {
-  margin-right: 25px;
-  width: 95%;
-  margin-left: 5px;
-  margin-right: 10px;
-}
+/*# sourceMappingURL=Display.css.map */

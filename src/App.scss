@@ -1,0 +1,17 @@
+$screen-sm-min: 576px;
+
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+.App {
+  width: 95%;
+  height: 95%;
+  touch-action: manipulation;
+
+  @include sm {
+    width: 400px;
+  }
+}

@@ -1,12 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap");
-
-body {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  font-family: "Lato", sans-serif;
-  font-size: 24px;
+.App {
+  width: 95%;
+  height: 95%;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
 }
+
+@media (min-width: 576px) {
+  .App {
+    width: 400px;
+  }
+}
+/*# sourceMappingURL=App.css.map */

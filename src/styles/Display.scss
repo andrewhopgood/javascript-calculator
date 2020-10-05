@@ -1,0 +1,34 @@
+#display__panel {
+  margin-right: 25px;
+  width: 95%;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#output-display {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #333;
+  color: #eeaa33;
+  font-size: 16px;
+  padding: 0;
+  width: 95%;
+  height: 30px;
+  border: none;
+  outline: none;
+}
+
+#input-display {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 0;
+  width: 95%;
+  height: 50px;
+  border: none;
+  outline: none;
+  font-size: 34px;
+}
