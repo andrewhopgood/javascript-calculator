@@ -40,12 +40,13 @@ function Calculator({ data }) {
   };
 
   const isEquals = () => {
-    if (inputDisplay.includes(operators) || outputDisplay === "") {
+    if (endsWithOperator.test(inputDisplay) || outputDisplay === "") {
       return;
     }
 
     evaluateString();
   };
+
   const isOperator = (x) => {
     if (inputDisplay === "0" && outputDisplay === "" && x !== "-") {
       return;
@@ -92,13 +93,13 @@ function Calculator({ data }) {
       return;
     }
 
-    if (inputDisplay === "0") {
+    if (endsWithOperator.test(inputDisplay)) {
       setOutputDisplay((prev) => prev + x);
       setInputDisplay(x);
       return;
     }
 
-    if (inputDisplay.includes(operators)) {
+    if (inputDisplay === "0") {
       setOutputDisplay((prev) => prev + x);
       setInputDisplay(x);
       return;
@@ -128,8 +129,8 @@ function Calculator({ data }) {
   };
 
   const evaluateString = () => {
-    let newStr = new String(eval(outputDisplay));
-    setInputDisplay(newStr);
+    let newStr = eval(outputDisplay);
+    setInputDisplay(newStr.toString());
     setOutputDisplay("");
   };
 
