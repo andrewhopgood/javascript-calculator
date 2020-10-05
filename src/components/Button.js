@@ -13,29 +13,38 @@ function Button({
   const endsWithOperator = /[+/*-]$/;
 
   const isOperator = (x) => {
-    if (inputDisplay === "0" && x !== "-") {
+    if (inputDisplay === "" && outputDisplay === "" && x !== "-") {
       return;
     }
     if (outputDisplay === "" && inputDisplay !== "0") {
       setOutputDisplay(inputDisplay + x);
-      return setInputDisplay("0");
+      setInputDisplay("0");
+      return;
+    }
+    if (inputDisplay === ".") {
+      setOutputDisplay((prev) => prev + "0" + x);
+      setInputDisplay(x);
+      return;
     }
     if (outputDisplay.endsWith("-")) {
       let outputDisplayCopy = outputDisplay;
       while (endsWithOperator.test(outputDisplayCopy)) {
         outputDisplayCopy = outputDisplayCopy.slice(0, -1);
       }
-      return setOutputDisplay(outputDisplayCopy + x);
+      setOutputDisplay(outputDisplayCopy + x);
+      return;
     }
 
     if (x !== "-" && endsWithOperator.test(outputDisplay)) {
       let newOutput = outputDisplay.slice(0, -1);
       setOutputDisplay(newOutput + x);
-      return setInputDisplay(x);
+      setInputDisplay(x);
+      return;
     }
 
     if (x === "-" && endsWithOperator.test(outputDisplay)) {
-      return setOutputDisplay((prev) => prev + x);
+      setOutputDisplay((prev) => prev + x);
+      return;
     }
 
     if (operators.includes(x)) {
@@ -45,13 +54,14 @@ function Button({
   };
 
   const isNumber = (x) => {
-    if (x === "0" && inputDisplay === "0") {
+    if (x === "0" && inputDisplay === "0" && outputDisplay.endsWith("0")) {
       return;
     }
 
     if (inputDisplay === "0") {
       setOutputDisplay((prev) => prev + x);
-      return setInputDisplay(x);
+      setInputDisplay(x);
+      return;
     }
 
     if (
@@ -61,7 +71,8 @@ function Button({
       inputDisplay === "-"
     ) {
       setOutputDisplay((prev) => prev + x);
-      return setInputDisplay(x);
+      setInputDisplay(x);
+      return;
     }
     setInputDisplay((prev) => prev + x);
     setOutputDisplay((prev) => prev + x);
@@ -80,7 +91,8 @@ function Button({
 
     if (endsWithOperator.test(outputDisplay)) {
       setInputDisplay("0" + x);
-      return setOutputDisplay((prev) => prev + "0.");
+      setOutputDisplay((prev) => prev + "0.");
+      return;
     }
     setOutputDisplay((prev) => prev + x);
     setInputDisplay(inputDisplay + x);
@@ -99,7 +111,7 @@ function Button({
       isOperator(candidate);
     }
     if (candidate === "AC") {
-      setInputDisplay("0");
+      setInputDisplay("");
       setOutputDisplay("");
     }
     if (candidate === "=") {
