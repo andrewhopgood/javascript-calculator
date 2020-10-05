@@ -1,4 +1,11 @@
-#output__screen {
+#display__panel {
+  margin-right: 25px;
+  width: 95%;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+#output-display {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -12,7 +19,7 @@
   outline: none;
   margin-left: 15px;
 }
-#display {
+#input-display {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -24,11 +31,4 @@
   border: none;
   outline: none;
   font-size: 34px;
-}
-
-#display__screen {
-  margin-right: 25px;
-  width: 95%;
-  margin-left: 5px;
-  margin-right: 10px;
 }

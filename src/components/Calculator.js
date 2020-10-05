@@ -6,14 +6,14 @@ import ButtonContainer from "../components/ButtonContainer";
 function Calculator({ data }) {
   const [inputDisplay, setInputDisplay] = useState("");
   const [outputDisplay, setOutputDisplay] = useState("");
-  const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-  const operators = ["*", "+", "/", "-"];
+  const numbers = /[0-9]$/;
   const endsWithOperator = /[+/*-]$/;
+  const operators = /[+/*-]$/;
 
   const handleClick = (e) => {
     let candidate = e.target.value;
 
-    if (numbers.includes(candidate)) {
+    if (numbers.test(candidate)) {
       updateDisplayWithNumber(candidate);
     }
 
@@ -21,7 +21,7 @@ function Calculator({ data }) {
       updateDisplayWithDecimal(candidate);
     }
 
-    if (operators.includes(candidate)) {
+    if (operators.test(candidate)) {
       updateDisplayWithOperator(candidate);
     }
 
@@ -82,7 +82,7 @@ function Calculator({ data }) {
       return;
     }
 
-    if (operators.includes(x)) {
+    if (operators.test(x)) {
       setOutputDisplay((prev) => prev + x);
       setInputDisplay(x);
     }
@@ -93,7 +93,19 @@ function Calculator({ data }) {
       return;
     }
 
-    if (endsWithOperator.test(inputDisplay)) {
+    if (x === "0" && outputDisplay === "") {
+      return;
+    }
+
+    if (
+      operators.test(outputDisplay.charAt(outputDisplay.length - 2)) &&
+      outputDisplay.charAt(outputDisplay.length - 1) === "0"
+    ) {
+      let newOutput = outputDisplay.slice(0, -1);
+      setOutputDisplay(newOutput);
+    }
+
+    if (operators.test(inputDisplay)) {
       setOutputDisplay((prev) => prev + x);
       setInputDisplay(x);
       return;
@@ -104,6 +116,7 @@ function Calculator({ data }) {
       setInputDisplay(x);
       return;
     }
+
     setInputDisplay((prev) => prev + x);
     setOutputDisplay((prev) => prev + x);
   };
@@ -119,7 +132,7 @@ function Calculator({ data }) {
       return;
     }
 
-    if (endsWithOperator.test(outputDisplay)) {
+    if (operators.test(outputDisplay)) {
       setInputDisplay("0" + x);
       setOutputDisplay((prev) => prev + "0.");
       return;
