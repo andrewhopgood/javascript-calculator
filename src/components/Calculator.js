@@ -14,15 +14,15 @@ function Calculator({ data }) {
     let candidate = e.target.value;
 
     if (numbers.includes(candidate)) {
-      isNumber(candidate);
+      updateDisplayWithNumber(candidate);
     }
 
     if (candidate === ".") {
-      isDecimal(candidate);
+      updateDisplayWithDecimal(candidate);
     }
 
     if (operators.includes(candidate)) {
-      isOperator(candidate);
+      updateDisplayWithOperator(candidate);
     }
 
     if (candidate === "AC") {
@@ -30,7 +30,7 @@ function Calculator({ data }) {
     }
 
     if (candidate === "=") {
-      isEquals();
+      evaluateOutput();
     }
   };
 
@@ -39,7 +39,7 @@ function Calculator({ data }) {
     setOutputDisplay("");
   };
 
-  const isEquals = () => {
+  const evaluateOutput = () => {
     if (endsWithOperator.test(inputDisplay) || outputDisplay === "") {
       return;
     }
@@ -47,7 +47,7 @@ function Calculator({ data }) {
     evaluateString();
   };
 
-  const isOperator = (x) => {
+  const updateDisplayWithOperator = (x) => {
     if (inputDisplay === "0" && outputDisplay === "" && x !== "-") {
       return;
     }
@@ -88,7 +88,7 @@ function Calculator({ data }) {
     }
   };
 
-  const isNumber = (x) => {
+  const updateDisplayWithNumber = (x) => {
     if (x === "0" && inputDisplay === "0" && outputDisplay.endsWith("0")) {
       return;
     }
@@ -108,7 +108,7 @@ function Calculator({ data }) {
     setOutputDisplay((prev) => prev + x);
   };
 
-  const isDecimal = (x) => {
+  const updateDisplayWithDecimal = (x) => {
     if (outputDisplay === "" && inputDisplay.includes(".") === false) {
       setOutputDisplay(inputDisplay + x);
       setInputDisplay(inputDisplay + x);
@@ -129,8 +129,8 @@ function Calculator({ data }) {
   };
 
   const evaluateString = () => {
-    let newStr = eval(outputDisplay);
-    setInputDisplay(newStr.toString());
+    let evaluation = eval(outputDisplay);
+    setInputDisplay(evaluation.toString());
     setOutputDisplay("");
   };
 
