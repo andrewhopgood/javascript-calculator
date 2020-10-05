@@ -11,38 +11,41 @@ function Calculator({ data }) {
   const endsWithOperator = /[+/*-]$/;
 
   const handleClick = (e) => {
-    const candidate = e.target.value;
+    let candidate = e.target.value;
 
     if (numbers.includes(candidate)) {
       isNumber(candidate);
     }
+
     if (candidate === ".") {
       isDecimal(candidate);
     }
+
     if (operators.includes(candidate)) {
       isOperator(candidate);
     }
-    if (candidate === "AC") {
-      setInputDisplay("0");
-      setOutputDisplay("");
-    }
-    if (candidate === "=") {
-      if (
-        inputDisplay === "+" ||
-        inputDisplay === "-" ||
-        inputDisplay === "*" ||
-        inputDisplay === "/"
-      ) {
-        return;
-      }
-      if (outputDisplay === "") {
-        return;
-      }
 
-      evaluateString();
+    if (candidate === "AC") {
+      clearAll();
+    }
+
+    if (candidate === "=") {
+      isEquals();
     }
   };
 
+  const clearAll = () => {
+    setInputDisplay("0");
+    setOutputDisplay("");
+  };
+
+  const isEquals = () => {
+    if (inputDisplay.includes(operators) || outputDisplay === "") {
+      return;
+    }
+
+    evaluateString();
+  };
   const isOperator = (x) => {
     if (inputDisplay === "0" && outputDisplay === "" && x !== "-") {
       return;
@@ -95,12 +98,7 @@ function Calculator({ data }) {
       return;
     }
 
-    if (
-      inputDisplay === "+" ||
-      inputDisplay === "*" ||
-      inputDisplay === "/" ||
-      inputDisplay === "-"
-    ) {
+    if (inputDisplay.includes(operators)) {
       setOutputDisplay((prev) => prev + x);
       setInputDisplay(x);
       return;
