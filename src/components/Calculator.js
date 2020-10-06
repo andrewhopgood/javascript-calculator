@@ -9,6 +9,7 @@ function Calculator({ data }) {
   const numbers = /[0-9]$/;
   const endsWithOperator = /[+/*-]$/;
   const operators = /[+/*-]$/;
+  var safeEval = require("safe-eval");
 
   const handleClick = (e) => {
     let candidate = e.target.value;
@@ -142,8 +143,9 @@ function Calculator({ data }) {
   };
 
   const evaluateString = () => {
-    let evaluation = eval(outputDisplay);
-    setInputDisplay(evaluation.toString());
+    var code = outputDisplay;
+    var evaluated = safeEval(code);
+    setInputDisplay(evaluated.toString());
     setOutputDisplay("");
   };
 
