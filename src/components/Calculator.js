@@ -150,6 +150,7 @@ function Calculator({ data }) {
   return (
     <div id="calculator">
       <Display inputDisplay={inputDisplay} outputDisplay={outputDisplay} />
+
       <ButtonContainer data={data} handleClick={handleClick} />
     </div>
   );
